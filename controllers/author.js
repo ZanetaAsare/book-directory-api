@@ -44,12 +44,27 @@ const getAuthorByID = async (req, res)=>{
         })
     } catch(error){
         console.log(error)
-       }
-    
+       }   
 }
+
+// all books by author
+
+
+// delete author by id
+const deleteAuthor = async (req, res) => {
+    const { id } = req.body
+    try{
+        await Author.findByIdAndDelete(id)
+        res.status(200).send({message: 'Author Successfully Deleted'})
+    }catch(error){
+        console.log(error)
+    }
+}
+
 
 module.exports = {
     addAuthor,
     getAuthors,
-    getAuthorByID
+    getAuthorByID,
+    deleteAuthor
 }
