@@ -18,6 +18,19 @@ const addAuthor = async (req,res) => {
     }    
 }
 
+// get all authors
+const getAuthors = async (req, res)=>{
+    await Author.find({}).exec((error, authors)=>{
+        if (error){
+            res.status(500).send({
+                error: 'Internal server error'
+            })
+        }
+        res.send(authors)
+    })
+}
+
 module.exports = {
-    addAuthor
+    addAuthor,
+    getAuthors
 }
