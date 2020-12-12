@@ -7,7 +7,7 @@ const adminSchema = mongoose.Schema({
 
 adminSchema.set('toJSON', {
     transform: (doc, admin) => {
-        admin.id = user._id.toString()
+        admin.id = admin._id.toString()
         delete admin._id
         delete admin.__v
         delete admin.password
