@@ -9,4 +9,7 @@ router.post('/api/admin/new', signup)
 // admin login
 router.post('/api/admin/login', login)
 
+// admin logout
+router.get('/api/admin/logout', logout)
+
 module.exports = router
