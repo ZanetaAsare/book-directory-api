@@ -30,8 +30,28 @@ const getBooks = async (req, res)=>{
     })
 }
 
+// get book by id - GET
+const getBookByID = async (req, res)=>{
+    const { id } = req.body
+    try{
+        await Book.findById(id).exec((error, books)=>{
+            if (error){
+                res.status(500).send({
+                    error: 'Internal server error'
+                })
+            }
+            res.send(books)
+        })
+    } catch(error){
+        console.log(error)
+       }
+    
+}
+
+
 
 module.exports = {
     addBook,
-    getBooks
+    getBooks, 
+    getBookByID
 }
