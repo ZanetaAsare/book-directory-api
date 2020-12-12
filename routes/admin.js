@@ -7,9 +7,9 @@ const {signup, login, logout} = require('../controllers/admin')
 router.post('/api/admin/new', signup)
 
 // admin login
-router.post('/api/admin/login', login)
+router.post('/admin/login', login)
 
 // admin logout
-router.get('/api/admin/logout', logout)
+router.get('/admin/logout', logout)
 
 module.exports = router

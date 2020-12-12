@@ -18,6 +18,20 @@ const addBook = async (req, res) => {
     }
 }
 
+// get all books - GET
+const getBooks = async (req, res)=>{
+    await Book.find({}).exec((error, books)=>{
+        if (error){
+            res.status(500).send({
+                error: 'Internal server error'
+            })
+        }
+        res.send(books)
+    })
+}
+
+
 module.exports = {
-    addBook
+    addBook,
+    getBooks
 }

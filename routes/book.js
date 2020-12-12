@@ -1,9 +1,12 @@
 const {Router} = require('express')
 const router = Router()
 
-const {addBook} = require('../controllers/book')
+const {addBook, getBooks} = require('../controllers/book')
 
 // route to add book
-router.post('/api/book/new', addBook)
+router.post('/books/new', addBook)
+
+// route to get all books
+router.get('/books', getBooks)
 
 module.exports = router
