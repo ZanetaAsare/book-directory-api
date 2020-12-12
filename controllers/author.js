@@ -48,6 +48,21 @@ const getAuthorByID = async (req, res)=>{
 }
 
 // all books by author
+const getBooksByAuthorID = async (req, res)=>{
+    const { id } = req.body
+    try{
+        await Author.findById(id).exec((error, authors)=>{
+            if (error){
+                res.status(500).send({
+                    error: 'Internal server error'
+                })
+            }
+            res.send(authors.books)
+        })
+    } catch(error){
+        console.log(error)
+       }   
+}
 
 
 // delete author by id
@@ -66,5 +81,6 @@ module.exports = {
     addAuthor,
     getAuthors,
     getAuthorByID,
+    getBooksByAuthorID,
     deleteAuthor
 }
