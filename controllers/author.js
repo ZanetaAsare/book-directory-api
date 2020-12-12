@@ -30,7 +30,26 @@ const getAuthors = async (req, res)=>{
     })
 }
 
+// get author by id - GET
+const getAuthorByID = async (req, res)=>{
+    const { id } = req.body
+    try{
+        await Author.findById(id).exec((error, authors)=>{
+            if (error){
+                res.status(500).send({
+                    error: 'Internal server error'
+                })
+            }
+            res.send(authors)
+        })
+    } catch(error){
+        console.log(error)
+       }
+    
+}
+
 module.exports = {
     addAuthor,
-    getAuthors
+    getAuthors,
+    getAuthorByID
 }
